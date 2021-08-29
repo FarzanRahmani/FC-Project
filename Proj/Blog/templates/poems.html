@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <title>Poems</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
+<style>body
+    {
+    background-color: lightblue;
+    }
+</style>
+    <body>
+        <center><big><h1>
+        <i class="fal fa-h1 "><div class="p-3 mb-2 bg-info text-white">بهترین اشعاری که شنیده اید را بنویسید و بخوانید</div></i>
+    </h1></big></center> <br>
+
+    <form action="{% url 'poems' %}"  method="POST">
+        <div class="form-group" >
+            <center>
+            <label for="p_username">    <div class="p-3 mb-2 bg-secondary text-white">اسم شریفتان را وارد کنید</div> </label>
+            <input type="text" class="form-control" id="p_username" name="p_username"  placeholder="Enter your name">
+        </center>
+        </div>
+        <div class="form-group">
+            <center>
+            <label for="p_p"><div class="p-3 mb-2 bg-success text-white">یکی از بهترین اشعاری رو که شنیده اید بنویسید</div>  </label>
+            <input type="text" class="form-control" id="p_p" name="p_p" placeholder="enter your favorite poem">
+        </center>
+        </div>
+
+        <div class="form-group">
+            <center>
+            <label for="p_p"><div class="p-3 mb-2 bg-dark text-white">نام شاعر را وارد کنید</div>  </label>
+            <input type="text" class="form-control" id="p_pt" name="p_pt" placeholder="enter poet's name">
+        </center>
+        </div>
+
+        <center>
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </center>
+        <br>
+    </form>
+        <center>
+            <h3>These are other people's suggestions:</h3>
+        </center>
+        <table class="table table-dark" >
+            <thead>
+                <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">name</th>
+                <th scope="col">poem</th>
+                <th scope="col">poet</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in data %}
+                <tr>
+                    <!-- <th scope="row">1</th> -->
+                    <td>{{x.name}}</td>
+                    <td>{{x.poem}}</td>
+                    <td>{{x.poet}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
